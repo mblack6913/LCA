@@ -1,1 +1,1 @@
-# Basic Lowest Common Ancestor program with tests
+# Basic Lowest Common Ancestor program with JUnint testing
