@@ -45,6 +45,6 @@ class LCATest {
 		BinaryTree tree = new BinaryTree();
 		int n1 = 10, n2 = 14;
 		Node t = tree.lca(tree.root, n1, n2);
-		assertEquals("Checking for null", null, tree.root);
+		assertNull("Checking for null", tree.root);
 	}
 }
