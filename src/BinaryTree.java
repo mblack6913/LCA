@@ -1,8 +1,9 @@
-public class BinaryTree  
+
+public class BinaryTree 
 { 
     Node root; 
        
-    Node lca(Node node, int n1, int n2)  
+    public Node lca(Node node, int n1, int n2)  
     { 
         if (node == null) 
             return null; 
@@ -17,6 +18,15 @@ public class BinaryTree
    
         return node; 
     } 
-   
+    
+    //Verifies if the value is in the tree
+    public boolean check (Node x, int data)
+    {
+    	if (x == null) return false;
+    	else if (x.data == data) return true;
+    	if (check(x.left, data) == true || check(x.right, data) == true) return true;
+    	
+    	return false;
+    } 
 } 
 
