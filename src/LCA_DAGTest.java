@@ -99,7 +99,7 @@ class LCA_DAGTest {
 	
 	
 	@Test
-	public void addEdge(){
+	public void testAddEdge(){
 		DAG dag = new DAG(5);
 		
 		dag.addEdge(1,2);
@@ -110,6 +110,18 @@ class LCA_DAGTest {
 		
 		dag.addEdge(1, 6);
 		assertEquals("Checking addEdge with non-existing vertex w", 1, dag.E()); //no of edges is still 1
+	}
+	
+	@Test 
+	public void testIndegree() {
+		DAG dag = new DAG(1);
+		assertEquals("Checking indegree with invalid vertex", -1, dag.indegree(2));
+	}
+	
+	@Test
+	public void testOutdegree() {
+		DAG dag = new DAG(1);
+		assertEquals("Checking outdegree with invalid vertes", -1, dag.outdegree(2));
 	}
 	
 }
