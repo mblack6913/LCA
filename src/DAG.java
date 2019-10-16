@@ -14,7 +14,7 @@ public class DAG
 	private ArrayList<Integer>[] adj;   //adjacency list for vertices
 	
 	
-	public DAG(int V){
+	public DAG(int V){ 
 		if(V < 0){
 			throw new IllegalArgumentException("Cannot initialise with no vertices");
 		}
@@ -65,7 +65,7 @@ public class DAG
 	//Returns number of directed edges from vertex v
 	public int outdegree(int v){
 		if(validateVertex(v)){
-			return adj[v].size();
+			return adj[v].size(); 
 		}
 		else{
 			return -1;
