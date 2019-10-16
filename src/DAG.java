@@ -91,17 +91,17 @@ public class DAG
 	
 	public void findCycle(int v){
 		marked[v] = true;
-		stack[v] = true;
+		//stack[v] = true;
 		
 		for(int w : adj(v)){
 			if(!marked[w]){
 				findCycle(w);
-			}else if(stack[w]){
+			}else { //if(stack[w]){
 				containsCycle = true;
 				return;
 			}
 		}
-		stack[v] = false;
+		//stack[v] = false;
 	}
 	
 	//Breadth-First search from source v

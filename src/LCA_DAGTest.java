@@ -79,7 +79,7 @@ class LCA_DAGTest {
 		assertEquals("Checking outdegree for unconnected vertex", 0, dag.indegree(1));
 		
 		dag.addEdge(1, 4);			//     4---3
-		dag.addEdge(1, 3);			//	    \ /
+		dag.addEdge(1, 3);			//		\ /
 		dag.addEdge(2, 1);			//       1 
 		dag.addEdge(3, 4);			//	    / \   
 		dag.addEdge(0, 1);			//     2   0
@@ -124,4 +124,18 @@ class LCA_DAGTest {
 		assertEquals("Checking outdegree with invalid vertes", -1, dag.outdegree(2));
 	}
 	
+	@Test
+	public void testFindCycle() {
+		DAG dag = new DAG(3);
+		
+		dag.addEdge(0, 1);			
+		dag.addEdge(1, 2);	
+		
+		dag.findCycle(0);
+		assertFalse("Checking for cycle in acyclic graph", dag.containsCycle());
+	
+		dag.addEdge(2, 0);
+		dag.findCycle(0);
+		assertTrue("Checking for cycle in cyclic graph", dag.containsCycle());
+	}
 }
