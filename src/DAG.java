@@ -7,10 +7,8 @@ public class DAG
 	private int V;						//no. of vertices
 	private int E;						//no. of edges
 	private int [] indegree;			//directed edges to vertex
-	private int [] outdegree;			//directed edges from vertex
 	private boolean containsCycle;		//	
 	private boolean marked [];			//list of visited vertices
-	private boolean stack [];			//
 	private ArrayList<Integer>[] adj;   //adjacency list for vertices
 	
 	
@@ -23,7 +21,6 @@ public class DAG
 		this.E = 0;
 		indegree = new int[V];
 		marked = new boolean[V];
-		stack = new boolean[V];
 		adj = (ArrayList<Integer>[]) new ArrayList[V];
 		
 		for(int v = 0; v < V; v++){
@@ -91,17 +88,15 @@ public class DAG
 	
 	public void findCycle(int v){
 		marked[v] = true;
-		//stack[v] = true;
 		
 		for(int w : adj(v)){
 			if(!marked[w]){
 				findCycle(w);
-			}else {//if(stack[w]){
+			}else {
 				containsCycle = true;
 				return;
 			}
 		}
-		//stack[v] = false;
 		marked[v] = false;
 	}
 	

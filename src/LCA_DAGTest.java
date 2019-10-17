@@ -1,8 +1,10 @@
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 class LCA_DAGTest {
+	
 
 	@Test
 	void basicTest() {
@@ -98,9 +100,9 @@ class LCA_DAGTest {
 	}
 	
 	
-	@Test(expected=Exception.class)
-	public void exceptionTest(){
-		DAG dag = new DAG(-1);
+	@Test
+	public void exceptionTest() {	 		
+		assertThrows(IllegalArgumentException.class, () -> new DAG(-1));
 	}
 	
 	
