@@ -1,5 +1,5 @@
 
-public class BinaryTree 
+public class LCA 
 { 
     Node root; 
        
@@ -28,5 +28,6 @@ public class BinaryTree
     	
     	return false;
     } 
+    
 } 
 
