@@ -96,12 +96,13 @@ public class DAG
 		for(int w : adj(v)){
 			if(!marked[w]){
 				findCycle(w);
-			}else { //if(stack[w]){
+			}else {//if(stack[w]){
 				containsCycle = true;
 				return;
 			}
 		}
 		//stack[v] = false;
+		marked[v] = false;
 	}
 	
 	//Breadth-First search from source v

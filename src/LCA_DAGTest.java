@@ -78,11 +78,17 @@ class LCA_DAGTest {
 		assertEquals("Checking indegree for unconnected vertex", 0, dag.indegree(1));
 		assertEquals("Checking outdegree for unconnected vertex", 0, dag.indegree(1));
 		
-		dag.addEdge(1, 4);			//     4---3
-		dag.addEdge(1, 3);			//		\ /
-		dag.addEdge(2, 1);			//       1 
-		dag.addEdge(3, 4);			//	    / \   
-		dag.addEdge(0, 1);			//     2   0
+		dag.addEdge(1, 4);			
+		dag.addEdge(1, 3);			
+		dag.addEdge(2, 1);			
+		dag.addEdge(3, 4);			  
+		dag.addEdge(0, 1);			
+		
+		//	     4 --3
+		//		  \ /
+		//         1 
+		//	      / \ 
+		//	     2   0
 		
 		assertEquals("Checking no. of vertices", 5, dag.V());
 		assertEquals("Checking no. of edges", 5, dag.E());
@@ -138,4 +144,49 @@ class LCA_DAGTest {
 		dag.findCycle(0);
 		assertTrue("Checking for cycle in cyclic graph", dag.containsCycle());
 	}
+	
+	@Test 
+	public void testLCA() {
+		
+		DAG dag = new DAG(10);
+		
+		//LCA test of graph with no edges
+		assertEquals("Checking LCA of (5,8)", -1, dag.LCA(5, 8));
+		
+		dag.addEdge(0, 3);			
+		dag.addEdge(0, 6);			
+		dag.addEdge(1, 2);	
+		
+		//no common ancestors LCA test
+		assertEquals("Checking LCA of vertices with no common ancestors (0,2)", -1, dag.LCA(0, 2));
+				
+		dag.addEdge(1, 8);			
+		dag.addEdge(2, 5);			
+		dag.addEdge(3, 1);			
+		dag.addEdge(3, 5);			
+		dag.addEdge(6, 1);			
+		
+		
+		//		  6	  8
+		//		 / \ / 		
+		//		0	1 --2		
+		//		 \ /   /
+		//		  3	--5	
+		
+		
+		//LCA sample tests
+		assertEquals("Checking LCA of (5,8)", 3, dag.LCA(5, 8));
+		assertEquals("Checking LCA of (2,5)", 2, dag.LCA(2, 5));
+		assertEquals("Checking LCA of (2,6)", 6, dag.LCA(2, 6));
+		
+		//invalid vertices LCA tests
+		assertEquals("Checking LCA of invalid vertices(-2,8)", -1, dag.LCA(-2, 8));
+		assertEquals("Checking LCA of invalid vertices(2,12)", -1, dag.LCA(2, 12));		
+		
+		//cyclic LCA test
+		dag.addEdge(5, 1);
+		dag.findCycle(1);
+		assertEquals("Checkint LCA of cyclic graph", -1, dag.LCA(5, 8));
+		
+	} 
 }
